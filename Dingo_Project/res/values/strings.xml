@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Dingo</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="ButtonBuscar">Buscar</string>
+    <string name="title_activity_dcinstrucoes">Dingo</string>
+    <string name="tx_busca"></string>
+    <string name="title_activity_dc">Dingo</string>
+    <string name="title_activity_selecionar_musica">SelecionarMusica</string>
+
+    <string-array name="item_list">
+        <item>ATIREI O PAU NO GATO </item>
+        <item>CAI CAI BALÃO</item>
+        <item>ESCRAVOS DE JÓ</item>
+        <item>FESTA JUNINA</item>
+        <item>ILARIÊ</item>
+        <item>LUA DE CRISTAL</item>
+        <item>PLUNCT PLACT ZUM</item>
+        <item>SUPER FANTÁSTICO</item>
+        <item>TINDOLELÊ</item>
+        <item>UNI DUNI TÊ</item>
+    </string-array>
+    <string-array name="itemJ_list">
+        <item>2 JOGADORES</item>
+        <item>3 JOGADORES</item>
+        <item>4 JOGADORES </item>
+        <item>5 JOGADORES</item>
+        <item>6 JOGADORES</item>
+        <item>7 JOGADORES</item>
+        <item>8 JOGADORES</item>
+        <item>9 JOGADORES</item>
+        <item>10 JOGADORES</item>
+    </string-array>
+
+    <string name="title_activity_selecionar_numero_jogadores">SelecionarNumeroJogadores</string>
+    <string name="title_activity_tirabug">Tirabug</string>
+
+</resources>

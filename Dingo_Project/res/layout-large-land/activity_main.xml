@@ -1,0 +1,37 @@
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/wp"
+    tools:context="com.example.dingo_project.MainActivity"
+    tools:ignore="MergeRootFrame" >
+
+    <Gallery
+        android:id="@+id/gallery1"
+        android:layout_width="859dp"
+        android:layout_height="427dp"
+        android:layout_x="74dp"
+        android:layout_y="49dp" />
+
+    <ImageButton
+        android:id="@+id/button_buscar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="968dp"
+        android:layout_y="0dp"
+        android:src="@drawable/abc_ic_search" />
+
+    <EditText
+        android:id="@+id/tx_busca"
+        android:layout_width="191dp"
+        android:layout_height="wrap_content"
+        android:layout_x="781dp"
+        android:layout_y="7dp"
+        android:ems="10"
+        android:hint="Nome da brincadeira" >
+
+        <requestFocus />
+    </EditText>
+
+</AbsoluteLayout>

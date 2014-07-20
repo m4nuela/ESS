@@ -1,0 +1,46 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/wp"
+    tools:context="com.example.dingo_project.DCInstrucoes"
+    tools:ignore="MergeRootFrame" >
+
+    <VideoView
+        android:id="@+id/videoView1"
+        android:layout_width="853dp"
+        android:layout_height="371dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="82dp"
+        android:layout_marginTop="18dp"
+        />
+
+    <ImageButton
+        android:id="@+id/button_pp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/button_bw4"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/pp2" />
+
+    <ImageButton
+        android:id="@+id/button_bw4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/videoView1"
+        android:layout_marginRight="30dp"
+        android:layout_toLeftOf="@+id/button_pp"
+        android:src="@drawable/bw2" />
+
+    <ImageButton
+        android:id="@+id/button_fw4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/button_pp"
+        android:layout_marginLeft="30dp"
+        android:layout_toRightOf="@+id/button_pp"
+        android:src="@drawable/fw2" />
+
+</RelativeLayout>

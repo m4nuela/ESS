@@ -1,0 +1,42 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/wp"
+    tools:context="com.example.dingo_project.DCInstrucoes"
+    tools:ignore="MergeRootFrame" >
+
+    <VideoView
+        android:id="@+id/videoView1"
+        android:layout_width="272dp"
+        android:layout_height="373dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp" />
+
+    <ImageButton
+        android:id="@+id/button_pp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/pp2" />
+
+    <ImageButton
+        android:id="@+id/button_bw4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/videoView1"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/bw2" />
+
+    <ImageButton
+        android:id="@+id/button_fw4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/videoView1"
+        android:src="@drawable/fw2" />
+
+</RelativeLayout>
