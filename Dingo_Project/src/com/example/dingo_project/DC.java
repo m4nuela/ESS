@@ -199,6 +199,7 @@ public class DC extends ActionBarActivity {
 
 			public void run() {
 				if(jaExiste == false){
+					jaExiste = true;
 					for(int i=positionJogador;i>1;i--){
 						Log.i("qnt jogafores ", i+"");
 						int mst = media.getDuration();
