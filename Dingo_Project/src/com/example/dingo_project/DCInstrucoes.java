@@ -52,7 +52,7 @@ public class DCInstrucoes extends ActionBarActivity {
 		mediaController.setAnchorView(videoV);
 		
 		
-		Uri video = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.eu);
+		Uri video = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.comojogardc);
 		videoV.setVideoURI(video);
 		videoV.setMediaController(mediaController);
 		videoV.start();
