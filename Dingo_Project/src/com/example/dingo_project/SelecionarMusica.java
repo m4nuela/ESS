@@ -42,9 +42,8 @@ public class SelecionarMusica extends ActionBarActivity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 
-				Intent i = new Intent (getApplicationContext(),MainActivity.class);
-				
-				startActivity(i);
+				//Intent i = new Intent (getApplicationContext(),MainActivity.class);
+				//startActivity(i);
 				finish();
 
 			}
@@ -86,7 +85,8 @@ public class SelecionarMusica extends ActionBarActivity {
 			     //Log.v("posicao musica 1  : ", position+"");
 			     
 			     Intent i = new Intent (getApplicationContext(),SelecionarNumeroJogadores.class);
-     			 i.putExtra("valorPosicao", position+1);
+     			 posicao = position+1;
+			     i.putExtra("valorPosicao", position+1);
 			     startActivity(i);
 
 				// vai para tela de selecionar numero de participantes

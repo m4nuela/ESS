@@ -21,6 +21,8 @@ import android.os.Build;
 
 public class SelecionarNumeroJogadores extends ActionBarActivity {
 
+	static int positionMusica =-1;
+	static int positionJogador =-1;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -30,7 +32,8 @@ public class SelecionarNumeroJogadores extends ActionBarActivity {
 		
 		
 		Intent i = getIntent();
-		final int positionMusica = i.getIntExtra("valorPosicao", -1);
+		 positionMusica = i.getIntExtra("valorPosicao", -1);
+		 
 		
 		 
 		 
@@ -43,8 +46,8 @@ public class SelecionarNumeroJogadores extends ActionBarActivity {
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
 
-					Intent i = new Intent (getApplicationContext(),SelecionarMusica.class);					
-					startActivity(i);
+					//Intent i = new Intent (getApplicationContext(),SelecionarMusica.class);					
+					//startActivity(i);
 					finish();
 
 				}
@@ -60,6 +63,8 @@ public class SelecionarNumeroJogadores extends ActionBarActivity {
 				public void onItemClick(AdapterView<?> parent, View view,
 						int position, long id) {
 					
+					 positionJogador = position+2;
+					 
 					 Intent i = new Intent (getApplicationContext(),DCInstrucoes.class);
 	     			 i.putExtra("PosicaoMusica", positionMusica);
 	     			 i.putExtra("PosicaoJogador", position+2);

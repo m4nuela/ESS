@@ -71,10 +71,7 @@ public class DCInstrucoes extends ActionBarActivity {
 				    	 videoV =  null;
 				     }
 					
-					Intent i = new Intent (getApplicationContext(),SelecionarNumeroJogadores.class);
-					i.putExtra("PosicaoMusica", positionMusica);
-					i.putExtra("PosicaoJogador", positionJogador);
-					startActivity(i);					
+					finish();					
 				}
 		 	
 		 	});

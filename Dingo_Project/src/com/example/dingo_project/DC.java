@@ -9,6 +9,7 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -155,35 +156,34 @@ public class DC extends ActionBarActivity {
 
 				if(media !=null){
 					if(media.isPlaying()){
-						media.stop();
+						media.pause();
 					}
-					media.release();
-					media =  null;
+					//media.release();
+					//media =  null;
+					
 
 				}
 
 				if(mediaAux !=null){
 					if(media.isPlaying()){
-						mediaAux.stop();
+						mediaAux.pause();
 					}
-					mediaAux.release();
-					mediaAux =  null;
+					//mediaAux.release();
+					//mediaAux =  null;
 
 				}
 
 				if(background.isAlive()){
 					background.interrupt();
-					background.destroy();
+					//background.destroy();
 					background = null;
 				}
 
 
 
 				jaCriou = false;
-				Intent i = new Intent (getApplicationContext(),DCInstrucoes.class);
-				i.putExtra("PosicaoMusica", positionMusica);
-				i.putExtra("PosicaoJogador", positionJogador);
-				startActivity(i);
+				
+				finish();
 
 			}
 
@@ -200,30 +200,31 @@ public class DC extends ActionBarActivity {
 
 
 				if(media !=null && media.isPlaying()){
-					media.stop();
-					media.release();
-					media =  null;
+					media.pause();
+					//media.release();
+					//media =  null;
 				}
 
-				if(mediaAux !=null){
-					mediaAux.stop();
-					mediaAux.release();
-					mediaAux =  null;
+				if(mediaAux !=null && mediaAux.isPlaying()){
+					mediaAux.pause();
+					//mediaAux.release();
+					//mediaAux =  null;
 
 				}
 
 
 				if(background.isAlive()){
-
+					
 					background.interrupt();
-					background.destroy();
+					//background.destroy();
 					background = null;
 				}
 
-
+					
 				jaCriou = false;
 				Intent i = new Intent (getApplicationContext(),MainActivity.class);
 				startActivity(i);
+				finish();
 
 			}
 
@@ -382,5 +383,47 @@ public class DC extends ActionBarActivity {
 			return rootView;
 		}
 	}
+	
+	/*
+	public void onStop(){
+		super.onStop();
+
+		if(media !=null){
+			if(media.isPlaying()){
+				media.pause();
+			}
+			//media.release();
+			//media =  null;
+			
+
+		}
+
+		if(mediaAux !=null){
+			if(media.isPlaying()){
+				mediaAux.pause();
+			}
+			//mediaAux.release();
+			//mediaAux =  null;
+
+		}
+
+		if(background.isAlive()){
+			background.interrupt();
+			//background.destroy();
+			background = null;
+		}
+finish();
+	}
+	*/
+	
+	
+	public void onBackPressed()  {
+		 
+		// Implemente aqui o novo comportamento do botao back
+		 
+		// ou deixe em branco para desabilitar qualquer acao do botao
+		 
+		}
+
 
 }
