@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.os.Build;
+
 import java.util.Random;
 
 public class DC extends ActionBarActivity {
@@ -25,10 +26,16 @@ public class DC extends ActionBarActivity {
 	MediaPlayer mediaAux;
 
 	static volatile Thread background;
-	static volatile Thread interna;
+	//static volatile Thread interna;
 	static boolean jaExiste;
 	static boolean jaCriou;
 	static boolean repetir; 
+	static int qntTcriou = 0;
+	static int msc;
+	static int mst;
+	static Random random =  new Random();
+	static int qntTocar;
+	static int positionf;
 
 
 	@Override
@@ -42,7 +49,7 @@ public class DC extends ActionBarActivity {
 
 
 		jaExiste = false;
-		repetir=false;
+		repetir = false;
 
 
 		Intent i = getIntent();
@@ -122,7 +129,7 @@ public class DC extends ActionBarActivity {
 
 				if(media.isPlaying()){
 					media.pause();	
-					Log.i("tempo ms : ",media.getCurrentPosition()+"");
+
 				}else{
 					if(!mediaAux.isPlaying()){
 						media.start();
@@ -145,23 +152,32 @@ public class DC extends ActionBarActivity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 
+
 				if(media !=null){
-					media.stop();
+					if(media.isPlaying()){
+						media.stop();
+					}
 					media.release();
 					media =  null;
 
 				}
 
 				if(mediaAux !=null){
-					mediaAux.stop();
+					if(media.isPlaying()){
+						mediaAux.stop();
+					}
 					mediaAux.release();
 					mediaAux =  null;
 
 				}
 
 				if(background.isAlive()){
+					background.interrupt();
 					background.destroy();
-				} 
+					background = null;
+				}
+
+
 
 				jaCriou = false;
 				Intent i = new Intent (getApplicationContext(),DCInstrucoes.class);
@@ -174,13 +190,15 @@ public class DC extends ActionBarActivity {
 		});
 
 
-		ImageButton x = (ImageButton) findViewById(R.id.button_X3);
+		ImageButton x = (ImageButton) findViewById(R.id.button_Xm);
 
 		x.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+
+
 				if(media !=null && media.isPlaying()){
 					media.stop();
 					media.release();
@@ -194,9 +212,14 @@ public class DC extends ActionBarActivity {
 
 				}
 
+
 				if(background.isAlive()){
+
+					background.interrupt();
 					background.destroy();
+					background = null;
 				}
+
 
 				jaCriou = false;
 				Intent i = new Intent (getApplicationContext(),MainActivity.class);
@@ -217,21 +240,40 @@ public class DC extends ActionBarActivity {
 				public void run() {
 					if(jaExiste == false){
 						jaExiste = true;
+
+						mst = media.getDuration();
 						for(int i=positionJogador;i>1;i--){
 							Log.i("jogadores :", i+"");
-							int mst = media.getDuration();
-							int msc = media.getCurrentPosition();
-							Random random =  new Random();
-							int qntTocar = (int) (mst*(0.070)+ random.nextInt((int) (mst*0.20)));
-							int positionf = msc + qntTocar;
+
+							msc = media.getCurrentPosition();
+							random =  new Random();
+							qntTocar = (int) (mst*(0.070)+ random.nextInt((int) (mst*0.20)));
+							positionf = msc + qntTocar;
 
 
 							media.start();
 
 							//Log.i("MSC1 : " ,msc+"");
 							//Log.i("GCP1 : " ,media.getCurrentPosition()+"");
+
+							int qnt = positionf;
+
 							while(media.getCurrentPosition()<positionf){
 
+
+								if(media.getCurrentPosition()>=media.getDuration()-5000){
+
+									media.seekTo(0);
+									repetir=true;
+
+									random =  new Random();
+									qntTocar = (int) (mst*(0.070)+ random.nextInt((int) (mst*0.20)));
+									positionf = 0 + qntTocar;
+
+
+								}
+
+								int cp = media.getCurrentPosition();
 								Log.i("jogadores :", i+"");
 								//while(media.getCurrentPosition()<msc+5000){
 
@@ -254,22 +296,28 @@ public class DC extends ActionBarActivity {
 
 
 
-							if(repetir == false){
-
+							/*if(repetir == false && qntTcriou==0){
+								qntTcriou++; 
 								interna  = new Thread(new Runnable(){
 
+									@SuppressWarnings("deprecation")
 									@Override
 									public void run() {
 										while (repetir==false){
-											if(media.getCurrentPosition()>=media.getDuration()-4000){
+											if(media.getCurrentPosition()>=media.getDuration()-5000){
 
 												media.seekTo(0);
 												repetir=true;
+
+												random =  new Random();
+												qntTocar = (int) (mst*(0.070)+ random.nextInt((int) (mst*0.20)));
+												positionf = 0 + qntTocar;
 
 
 											}
 											Log.i("TREAD INTERNA :" , "c:" + media.getCurrentPosition() + " d: "+ media.getDuration());
 										}
+
 										interna.destroy();
 									}
 
@@ -278,7 +326,7 @@ public class DC extends ActionBarActivity {
 
 
 							}
-
+							 */
 
 						}
 						background.destroy();
