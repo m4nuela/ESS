@@ -114,12 +114,12 @@ public class DCInstrucoes extends ActionBarActivity {
 
 			@Override
 			public void onClick(View v) {
-				if(cont ==0){
+				if(cont == 0){
 					videoV.pause();
 					cont =1;
 				}else{
 					videoV.start();
-					cont=0;
+					cont = 0;
 				}
 				
 

@@ -17,12 +17,12 @@
         android:src="@drawable/pp" />
 
     <ImageButton
-        android:id="@+id/button_X3"
+        android:id="@+id/button_Xm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/button_bw2"
-        android:layout_marginRight="21dp"
+        android:layout_marginRight="50dp"
         android:src="@drawable/x2" />
 
     <ImageButton
@@ -30,8 +30,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="23dp"
-        android:layout_toLeftOf="@+id/button_X3"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="50dp"
         android:src="@drawable/bw2" />
+
+    <ImageButton
+        android:id="@+id/ImageButton01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button_Xm"
+        android:layout_alignTop="@+id/button_Xm"
+        android:src="@drawable/x2" />
 
 </RelativeLayout>

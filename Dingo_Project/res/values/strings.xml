@@ -8,7 +8,7 @@
     <string name="title_activity_dcinstrucoes">Dingo</string>
     <string name="tx_busca"></string>
     <string name="title_activity_dc">Dingo</string>
-    <string name="title_activity_selecionar_musica">SelecionarMusica</string>
+    <string name="title_activity_selecionar_musica">Dingo</string>
 
     <string-array name="item_list">
         <item>ATIREI O PAU NO GATO </item>
@@ -34,7 +34,6 @@
         <item>10 JOGADORES</item>
     </string-array>
 
-    <string name="title_activity_selecionar_numero_jogadores">SelecionarNumeroJogadores</string>
-    <string name="title_activity_tirabug">Tirabug</string>
+    <string name="title_activity_selecionar_numero_jogadores">Dingo</string>
 
 </resources>

@@ -15,22 +15,19 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="14dp"
         android:layout_marginTop="9dp"
-        android:layout_x="10dp"
-        android:layout_y="6dp"
+       
         android:text="Selecione número de jogadores"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <ListView
-        android:id="@+id/list"
-        android:layout_width="match_parent"
-        android:layout_height="332dp"
-        android:layout_above="@+id/button_bw4"
+  android:id="@+id/list"
+           android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/button_fw3"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/textView1"
-        android:layout_marginLeft="1dp"
-        android:layout_marginTop="14dp"
-        android:layout_x="1dp"
-        android:layout_y="37dp"
+        android:layout_margin="20dp"
+        android:layout_y="36dp"
         android:divider="#111111"
         android:dividerHeight="2sp"
         android:entries="@array/itemJ_list" >
@@ -42,7 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true"
         android:src="@drawable/bw2" />
 
 </RelativeLayout>

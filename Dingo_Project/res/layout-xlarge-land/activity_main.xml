@@ -20,7 +20,9 @@
         android:layout_width="1155dp"
         android:layout_height="583dp"
         android:layout_x="67dp"
-        android:layout_y="69dp" />
+        android:layout_y="69dp"
+        
+        />
 
     <EditText
         android:id="@+id/tx_busca"
@@ -30,6 +32,7 @@
         android:layout_y="16dp"
         android:ems="10"
         android:hint="Nome da brincadeira"
+        android:singleLine="true"
         android:textSize="30sp" >
 
         <requestFocus />

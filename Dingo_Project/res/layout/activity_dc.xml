@@ -17,7 +17,7 @@
         android:src="@drawable/bw2" />
 
     <ImageButton
-        android:id="@+id/button_X3"
+        android:id="@+id/button_Xm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

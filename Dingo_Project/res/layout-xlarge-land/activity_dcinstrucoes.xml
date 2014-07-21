@@ -9,38 +9,39 @@
 
     <VideoView
         android:id="@+id/videoView1"
-        android:layout_width="1128dp"
-        android:layout_height="549dp"
-        android:layout_alignParentLeft="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="75dp"
-        android:layout_marginTop="40dp"
-        />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginBottom="80dp" />
 
     <ImageButton
-        android:id="@+id/button_bw4"
+          android:id="@+id/button_fw4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/videoView1"
-        android:layout_alignTop="@+id/button_pp"
-        android:layout_marginLeft="405dp"
-        android:src="@drawable/bw2" />
-
-    <ImageButton
-        android:id="@+id/button_fw4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/button_pp"
-        android:layout_marginLeft="38dp"
-        android:layout_toRightOf="@+id/button_pp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/button_bw4"
+        android:layout_marginRight="50dp"
         android:src="@drawable/fw2" />
 
     <ImageButton
         android:id="@+id/button_pp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/videoView1"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:src="@drawable/pp2" />
+
+    <ImageButton
+        android:id="@+id/button_bw4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/videoView1"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/bw2" />
 
 </RelativeLayout>
