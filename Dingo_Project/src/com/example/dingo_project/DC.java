@@ -23,16 +23,26 @@ public class DC extends ActionBarActivity {
 
 	MediaPlayer media;
 	MediaPlayer mediaAux;
-	static boolean tocar = true;
+
 	static volatile Thread background;
-	static boolean jaExiste = false;
+	static volatile Thread interna;
+	static boolean jaExiste;
+	static boolean jaCriou;
+	static boolean repetir; 
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_dc);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
+
+
+		jaExiste = false;
+		repetir=false;
 
 
 		Intent i = getIntent();
@@ -121,6 +131,7 @@ public class DC extends ActionBarActivity {
 
 
 
+
 			}
 
 		});
@@ -152,6 +163,7 @@ public class DC extends ActionBarActivity {
 					background.destroy();
 				} 
 
+				jaCriou = false;
 				Intent i = new Intent (getApplicationContext(),DCInstrucoes.class);
 				i.putExtra("PosicaoMusica", positionMusica);
 				i.putExtra("PosicaoJogador", positionJogador);
@@ -185,6 +197,8 @@ public class DC extends ActionBarActivity {
 				if(background.isAlive()){
 					background.destroy();
 				}
+
+				jaCriou = false;
 				Intent i = new Intent (getApplicationContext(),MainActivity.class);
 				startActivity(i);
 
@@ -193,61 +207,89 @@ public class DC extends ActionBarActivity {
 		});
 
 
-		background = new Thread(new Runnable(){
+
+		if(jaCriou == false){
+			jaCriou = true;
+			background = new Thread(new Runnable(){
 
 
 
-			public void run() {
-				if(jaExiste == false){
-					jaExiste = true;
-					for(int i=positionJogador;i>1;i--){
-						Log.i("qnt jogafores ", i+"");
-						int mst = media.getDuration();
-						int msc = media.getCurrentPosition();
-						Random random =  new Random();
-						int qntTocar = (int) (mst*(0.08)+ random.nextInt((int) (mst*0.12)));
-						int positionf = msc + qntTocar;
+				public void run() {
+					if(jaExiste == false){
+						jaExiste = true;
+						for(int i=positionJogador;i>1;i--){
+							Log.i("jogadores :", i+"");
+							int mst = media.getDuration();
+							int msc = media.getCurrentPosition();
+							Random random =  new Random();
+							int qntTocar = (int) (mst*(0.070)+ random.nextInt((int) (mst*0.20)));
+							int positionf = msc + qntTocar;
 
 
-						media.start();
+							media.start();
 
-						Log.i("MSC1 : " ,msc+"");
-						Log.i("GCP1 : " ,media.getCurrentPosition()+"");
-						while(media.getCurrentPosition()<positionf){
+							//Log.i("MSC1 : " ,msc+"");
+							//Log.i("GCP1 : " ,media.getCurrentPosition()+"");
+							while(media.getCurrentPosition()<positionf){
+
+								Log.i("jogadores :", i+"");
+								//while(media.getCurrentPosition()<msc+5000){
+
+							}
+							//Log.i("MSC2 : " ,msc+"");
+							//Log.i("GCP2 : " ,media.getCurrentPosition()+"");
+
+							media.pause();
+
+							if(i!=2){
+								mediaAux.start();
+							}
+
+							while(mediaAux.isPlaying()){
+
+							}
+							mediaAux.seekTo(0);
+							mediaAux.pause();
 
 
-							//while(media.getCurrentPosition()<msc+5000){
+
+
+							if(repetir == false){
+
+								interna  = new Thread(new Runnable(){
+
+									@Override
+									public void run() {
+										while (repetir==false){
+											if(media.getCurrentPosition()>=media.getDuration()-4000){
+
+												media.seekTo(0);
+												repetir=true;
+
+
+											}
+											Log.i("TREAD INTERNA :" , "c:" + media.getCurrentPosition() + " d: "+ media.getDuration());
+										}
+										interna.destroy();
+									}
+
+								});
+								interna.start();
+
+
+							}
+
 
 						}
-						Log.i("MSC2 : " ,msc+"");
-						Log.i("GCP2 : " ,media.getCurrentPosition()+"");
-
-						media.pause();
-
-						if(i!=2){
-							mediaAux.start();
-						}
-
-						while(mediaAux.isPlaying()){
-
-						}
-						mediaAux.seekTo(0);
-						mediaAux.pause();
-
-
-
-						Log.i("heyyyyyyyyyyyyyyyy", media.getCurrentPosition()+"");
-
+						background.destroy();
 
 
 					}
-					background.destroy();
-					
 
 				}
-			}
-		});
-		background.start();	
+			});
+			background.start();	
+		}
 
 
 
