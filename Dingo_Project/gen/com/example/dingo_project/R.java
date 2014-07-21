@@ -1264,10 +1264,11 @@ containing a value of this type.
         public static final int ilarie=0x7f050005;
         public static final int luadecristal=0x7f050006;
         public static final int plunctplactzum=0x7f050007;
-        public static final int r2d2=0x7f050008;
-        public static final int superfantastico=0x7f050009;
-        public static final int tindolele=0x7f05000a;
-        public static final int unidunite=0x7f05000b;
+        public static final int removacadeira2dc=0x7f050008;
+        public static final int removacadeiradc=0x7f050009;
+        public static final int superfantastico=0x7f05000a;
+        public static final int tindolele=0x7f05000b;
+        public static final int unidunite=0x7f05000c;
     }
     public static final class string {
         public static final int ButtonBuscar=0x7f0b0010;

@@ -25,6 +25,7 @@ public class DC extends ActionBarActivity {
 
 	MediaPlayer media;
 	MediaPlayer mediaAux;
+	MediaPlayer mediaAux2;
 
 	static volatile Thread background;
 	//static volatile Thread interna;
@@ -37,6 +38,7 @@ public class DC extends ActionBarActivity {
 	static Random random =  new Random();
 	static int qntTocar;
 	static int positionf;
+
 
 
 	@Override
@@ -114,8 +116,14 @@ public class DC extends ActionBarActivity {
 		media = MediaPlayer.create(DC.this, path);
 		//media.start();
 
-		Uri path2= Uri.parse("android.resource://" + getPackageName()+ "/"+ R.raw.r2d2);
+		Uri path2= Uri.parse("android.resource://" + getPackageName()+ "/"+ R.raw.removacadeiradc);
 		mediaAux = MediaPlayer.create(DC.this, path2);
+		mediaAux.setVolume(50, 50);
+		
+		Uri path3= Uri.parse("android.resource://" + getPackageName()+ "/"+ R.raw.removacadeira2dc);
+		mediaAux2 = MediaPlayer.create(DC.this, path3);
+		mediaAux2.setVolume(50, 50);
+		
 
 
 		ImageButton pp = (ImageButton) findViewById(R.id.buton_pp2);
@@ -165,12 +173,19 @@ public class DC extends ActionBarActivity {
 				}
 
 				if(mediaAux !=null){
-					if(media.isPlaying()){
+					if(mediaAux.isPlaying()){
 						mediaAux.pause();
 					}
 					//mediaAux.release();
 					//mediaAux =  null;
 
+				}
+				
+				
+				if(mediaAux2 !=null){
+					if(mediaAux2.isPlaying()){
+						mediaAux2.pause();
+					}
 				}
 
 				if(background.isAlive()){
@@ -211,6 +226,13 @@ public class DC extends ActionBarActivity {
 					//mediaAux =  null;
 
 				}
+				
+				if(mediaAux2 !=null && mediaAux2.isPlaying()){
+					mediaAux2.pause();
+
+				}
+				
+				
 
 
 				if(background.isAlive()){
@@ -245,6 +267,16 @@ public class DC extends ActionBarActivity {
 						mst = media.getDuration();
 						for(int i=positionJogador;i>1;i--){
 							Log.i("jogadores :", i+"");
+							
+							if(positionJogador==2){
+								mediaAux2.start();	
+								while(mediaAux2.isPlaying()){
+
+								}
+								mediaAux2.seekTo(0);
+								mediaAux2.pause();
+								
+							}
 
 							msc = media.getCurrentPosition();
 							random =  new Random();
@@ -283,16 +315,32 @@ public class DC extends ActionBarActivity {
 							//Log.i("GCP2 : " ,media.getCurrentPosition()+"");
 
 							media.pause();
-
-							if(i!=2){
+							
+							if(i>3){
 								mediaAux.start();
+								
+								while(mediaAux.isPlaying()){
+
+								}
+								mediaAux.seekTo(0);
+								mediaAux.pause();
+
+								
+		
+								
+							}else if(i==3){
+								mediaAux2.start();	
+								
+								
+								while(mediaAux2.isPlaying()){
+
+								}
+								mediaAux2.seekTo(0);
+								mediaAux2.pause();
+								
 							}
 
-							while(mediaAux.isPlaying()){
-
-							}
-							mediaAux.seekTo(0);
-							mediaAux.pause();
+							
 
 
 
@@ -330,7 +378,7 @@ public class DC extends ActionBarActivity {
 							 */
 
 						}
-						background.destroy();
+						background.interrupt();
 
 
 					}
