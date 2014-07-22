@@ -26,6 +26,7 @@ public class DC extends ActionBarActivity {
 	MediaPlayer media;
 	MediaPlayer mediaAux;
 	MediaPlayer mediaAux2;
+	MediaPlayer mediaAux3;
 
 	static volatile Thread background;
 	//static volatile Thread interna;
@@ -119,11 +120,15 @@ public class DC extends ActionBarActivity {
 		Uri path2= Uri.parse("android.resource://" + getPackageName()+ "/"+ R.raw.removacadeiradc);
 		mediaAux = MediaPlayer.create(DC.this, path2);
 		mediaAux.setVolume(50, 50);
-		
+
 		Uri path3= Uri.parse("android.resource://" + getPackageName()+ "/"+ R.raw.removacadeira2dc);
 		mediaAux2 = MediaPlayer.create(DC.this, path3);
 		mediaAux2.setVolume(50, 50);
-		
+
+		Uri path4= Uri.parse("android.resource://" + getPackageName()+ "/"+ R.raw.parabens);
+		mediaAux3 = MediaPlayer.create(DC.this, path4);
+		mediaAux3.setVolume(50, 50);
+
 
 
 		ImageButton pp = (ImageButton) findViewById(R.id.buton_pp2);
@@ -168,7 +173,7 @@ public class DC extends ActionBarActivity {
 					}
 					//media.release();
 					//media =  null;
-					
+
 
 				}
 
@@ -180,13 +185,22 @@ public class DC extends ActionBarActivity {
 					//mediaAux =  null;
 
 				}
-				
-				
+
+
 				if(mediaAux2 !=null){
 					if(mediaAux2.isPlaying()){
 						mediaAux2.pause();
 					}
 				}
+
+
+				if(mediaAux3 !=null){
+					if(mediaAux3.isPlaying()){
+						mediaAux3.pause();
+					}
+				}
+
+
 
 				if(background.isAlive()){
 					background.interrupt();
@@ -197,7 +211,7 @@ public class DC extends ActionBarActivity {
 
 
 				jaCriou = false;
-				
+
 				finish();
 
 			}
@@ -226,23 +240,26 @@ public class DC extends ActionBarActivity {
 					//mediaAux =  null;
 
 				}
-				
+
 				if(mediaAux2 !=null && mediaAux2.isPlaying()){
 					mediaAux2.pause();
 
 				}
-				
-				
+
+				if(mediaAux3 !=null && mediaAux3.isPlaying()){
+					mediaAux3.pause();
+
+				}
 
 
 				if(background.isAlive()){
-					
+
 					background.interrupt();
 					//background.destroy();
 					background = null;
 				}
 
-					
+
 				jaCriou = false;
 				Intent i = new Intent (getApplicationContext(),MainActivity.class);
 				startActivity(i);
@@ -267,7 +284,7 @@ public class DC extends ActionBarActivity {
 						mst = media.getDuration();
 						for(int i=positionJogador;i>1;i--){
 							Log.i("jogadores :", i+"");
-							
+
 							if(positionJogador==2){
 								mediaAux2.start();	
 								while(mediaAux2.isPlaying()){
@@ -275,7 +292,7 @@ public class DC extends ActionBarActivity {
 								}
 								mediaAux2.seekTo(0);
 								mediaAux2.pause();
-								
+
 							}
 
 							msc = media.getCurrentPosition();
@@ -315,32 +332,32 @@ public class DC extends ActionBarActivity {
 							//Log.i("GCP2 : " ,media.getCurrentPosition()+"");
 
 							media.pause();
-							
+
 							if(i>3){
 								mediaAux.start();
-								
+
 								while(mediaAux.isPlaying()){
 
 								}
 								mediaAux.seekTo(0);
 								mediaAux.pause();
 
-								
-		
-								
+
+
+
 							}else if(i==3){
 								mediaAux2.start();	
-								
-								
+
+
 								while(mediaAux2.isPlaying()){
 
 								}
 								mediaAux2.seekTo(0);
 								mediaAux2.pause();
-								
+
 							}
 
-							
+
 
 
 
@@ -379,6 +396,14 @@ public class DC extends ActionBarActivity {
 
 						}
 						background.interrupt();
+						
+						
+						mediaAux3.start();	
+						while(mediaAux3.isPlaying()){
+
+						}
+						mediaAux3.seekTo(0);
+						mediaAux3.pause();
 
 
 					}
@@ -431,7 +456,7 @@ public class DC extends ActionBarActivity {
 			return rootView;
 		}
 	}
-	
+
 	/*
 	public void onStop(){
 		super.onStop();
@@ -442,7 +467,7 @@ public class DC extends ActionBarActivity {
 			}
 			//media.release();
 			//media =  null;
-			
+
 
 		}
 
@@ -462,16 +487,16 @@ public class DC extends ActionBarActivity {
 		}
 finish();
 	}
-	*/
-	
-	
+	 */
+
+
 	public void onBackPressed()  {
-		 
+
 		// Implemente aqui o novo comportamento do botao back
-		 
+
 		// ou deixe em branco para desabilitar qualquer acao do botao
-		 
-		}
+
+	}
 
 
 }

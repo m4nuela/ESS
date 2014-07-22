@@ -35,12 +35,4 @@
         android:layout_marginLeft="50dp"
         android:src="@drawable/bw2" />
 
-    <ImageButton
-        android:id="@+id/ImageButton01"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button_Xm"
-        android:layout_alignTop="@+id/button_Xm"
-        android:src="@drawable/x2" />
-
 </RelativeLayout>
